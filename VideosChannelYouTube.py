@@ -2,7 +2,7 @@ import requests
 import os
 from pytube import Channel
 
-name_channel = input('Введите ссылку на канал: ')
+name_channel = input('URL Channel: ')
 
 try:
     channel = Channel(name_channel)
@@ -10,7 +10,7 @@ try:
     video_count = len(videos)
 
     if video_count > 0:
-        print(f'Начинаю скачивать видео с канала: {channel.channel_name}.\n\rВсего видео: {video_count}')
+        print(f'Begin download video from channel: {channel.channel_name}.\nCount videos: {video_count}')
         path = channel.channel_name + '/'
         name_file = 1
 
@@ -40,9 +40,9 @@ try:
                         video.streams.filter(file_extension='mp4').first().download(path, str(name_file) + '.mp4')
                     break
                 except:
-                    print(f'[{video.video_id}] Ошибка скачивания видео. Повторный запуск.')
+                    print(f'[{video.video_id}] Error download video. Restart download.')
 
-            print(f'[{video.video_id}] Видео сохранено по пути {path}{name_file}.mp4')
+            print(f'[{video.video_id}] Video saved to {path}{name_file}.mp4')
             thumbnail_url = f'https://i.ytimg.com/vi/{video.video_id}/maxresdefault.jpg'
             req = requests.get(thumbnail_url)
             with open(path + str(name_file) + '.jpg', 'wb') as preview:
@@ -53,8 +53,8 @@ try:
                 req = requests.get(thumbnail_url)
                 with open(path + str(name_file) + '.jpg', 'wb') as preview:
                     preview.write(req.content)
-            print(f'[{video.video_id}] Превью сохранено по пути {path}{name_file}.jpg')
+            print(f'[{video.video_id}] Preview saved to {path}{name_file}.jpg')
             name_file += 1
-    else: print("Видео на канале не найдены.")
+    else: print("Videos not found.")
 except:
-    print('Неверная ссылка на канал.')
+    print('Error link.')
