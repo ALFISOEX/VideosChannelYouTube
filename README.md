@@ -1,6 +1,6 @@
 # VideosChannelYouTube
 Download all videos and previews from channel.
 
-# Library
+# Using Library
 <code>pip install requests</code><br>
 <code>pip install pytube</code>
