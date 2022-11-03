@@ -1,9 +1,9 @@
 # VideosChannelYouTube
-Download all videos and previews from channel.
+Программа скачивает все видео и их превью с указанного YouTube-канала.
 
-# Using Library
+# Необходимые библиотеки
 <code>pip install requests</code><br>
 <code>pip install pytube</code>
 
-# Execute
+# Запуск
 <code>python VideosChannelYouTube.py</code>
